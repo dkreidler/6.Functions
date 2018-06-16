@@ -10,7 +10,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 200px;
+            width: 242px;
             background: #eee;
         }
         
@@ -18,6 +18,9 @@
             line-height: 1.5;
             padding: 10px 20px;
             color: #333;
+            padding-left: 82px;
+            background-position: 25px center;
+            background-repeat: no-repeat;
         }
         
         .msgBox button {
@@ -37,7 +40,9 @@
 
     <script>
         var btn = document.querySelector('button');
-        btn.onclick = displayMessage;
+        btn.onclick = function() {
+            displayMessage('Brian: Hi there, how are you today?', 'chat');
+        }
 
         function displayMessage(msgText, msgType) {
             var html = document.querySelector('html');
@@ -47,7 +52,7 @@
             html.appendChild(panel);
 
             var msg = document.createElement('p');
-            msg.textContent = 'This is a message box';
+            msg.textContent = msgText;
             panel.appendChild(msg);
 
             var closeBtn = document.createElement('button');
@@ -57,7 +62,15 @@
             closeBtn.onclick = function() {
                 panel.parentNode.removeChild(panel);
             }
-
+            if (msgType === 'warning') {
+                msg.style.backgroundImage = 'url(icons/warning.png)';
+                panel.style.backgroundColor = 'red';
+            } else if (msgType === 'chat') {
+                msg.style.backgroundImage = 'url(icons/chat.png)';
+                panel.style.backgroundColor = 'aqua';
+            } else {
+                msg.style.padding.left = '20px';
+            }
         }
     </script>
 </body>
