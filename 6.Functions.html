@@ -11,6 +11,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 242px;
+            background: linear-gradient(black, white);
             background: #eee;
         }
         
@@ -41,7 +42,7 @@
     <script>
         var btn = document.querySelector('button');
         btn.onclick = function() {
-            displayMessage('Brian: Hi there, how are you today?', 'chat');
+            displayMessage('Brian: Hi there, how are you today?', 'warning');
         }
 
         function displayMessage(msgText, msgType) {
@@ -64,10 +65,10 @@
             }
             if (msgType === 'warning') {
                 msg.style.backgroundImage = 'url(icons/warning.png)';
-                panel.style.backgroundColor = 'red';
+                panel.style.background = 'linear-gradient(to right, red, purple)';
             } else if (msgType === 'chat') {
                 msg.style.backgroundImage = 'url(icons/chat.png)';
-                panel.style.backgroundColor = 'aqua';
+                panel.style.background = 'linear-gradient(blue, aqua)';
             } else {
                 msg.style.padding.left = '20px';
             }
